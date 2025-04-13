@@ -1,5 +1,13 @@
+import { useState } from "react"
+import Consumo from "./components/Consumo"
+import Menu from "./components/Menu"
+import { MenuItemsQuantity,  } from "./types/types"
 
 function App() {
+
+  const [state, setState] = useState<MenuItemsQuantity[]>([])
+
+
 
   return (
     <>
@@ -9,16 +17,21 @@ function App() {
         </div>
       </header>
 
-      <section className="mx-auto max-w-4xl">
-        <div className="flex justify-between items-center my-5">
+      <section className="">
+        <div className="grid grid-cols-2 gap-5 py-5 mx-auto max-w-4xl">
 
           <div>
-            <h1>Menu</h1>
+            <Menu
+            state={state}
+            setState={setState}
+            />
           </div>
 
 
           <div>
-            <h2>Consumo</h2>
+            <Consumo
+            state={state}
+            />
           </div>
 
         </div>
