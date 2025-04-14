@@ -1,18 +1,18 @@
 import { menuItems } from "../data/menuItems";
 import { MenuItems, MenuItemsQuantity } from "../types/types";
+import { formatUSD } from "../helpers/helpers";
+
+
 
 type MenuProps = {
     state: MenuItemsQuantity[],
     setState: React.Dispatch<React.SetStateAction<MenuItemsQuantity[]>>
+    
 }
 
-export default function Menu({ state, setState }: MenuProps) {
+export default function Menu({ state, setState,  }: MenuProps) {
 
-    const formatUSD = (value: number) =>
-        new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-        }).format(value);
+
 
     function addDish(item: MenuItems) {
 

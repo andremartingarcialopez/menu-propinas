@@ -1,11 +1,23 @@
 import { useState } from "react"
 import Consumo from "./components/Consumo"
 import Menu from "./components/Menu"
-import { MenuItemsQuantity,  } from "./types/types"
+import { MenuItemsQuantity, } from "./types/types"
+import Propina from "./components/Propina"
+import Totales from "./components/Totales"
 
 function App() {
 
   const [state, setState] = useState<MenuItemsQuantity[]>([])
+  const [tip, setTip] = useState(0);
+
+
+  function deleteDish(id: number) {
+    const remove = state.filter(function (item) {
+      return item.id !== id
+    })
+
+    setState(remove)
+  }
 
 
 
@@ -18,21 +30,39 @@ function App() {
       </header>
 
       <section className="">
-        <div className="grid grid-cols-2 gap-5 py-5 mx-auto max-w-4xl">
+        <div className="lg:grid grid-cols-2 gap-5 py-5 mx-auto max-w-4xl px-3">
 
-          <div>
+          <section>
             <Menu
-            state={state}
-            setState={setState}
+              state={state}
+              setState={setState}
             />
-          </div>
+          </section>
+
+          {state.length ?
+            <section className="p-10 border rounded-xl border-blue-600 border-dashed">
+              <Consumo
+                state={state}
+                deleteDish={deleteDish}
+              />
+
+              <Propina
+                tip={tip}
+                setTip={setTip}
+              />
+
+              <Totales
+                state={state}
+                tip={tip}
+                setState={setState}
+                setTip={setTip}
 
 
-          <div>
-            <Consumo
-            state={state}
-            />
-          </div>
+              />
+            </section>
+            :
+            <p className="text-center font-semibold text-xl">Ninguna orden registrada</p>
+        }
 
         </div>
 
