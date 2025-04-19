@@ -25,7 +25,7 @@ function App() {
     <>
       <header className="p-5 bg-blue-600/60">
         <div className="mx-auto max-w-4xl">
-          <h1 className="text-center text-2xl md:text-4xl font-bold text-white uppercase">Consumo y Propinas</h1>
+          <h1 className="text-center text-2xl md:text-4xl font-bold text-white uppercase">Menu y Propinas</h1>
         </div>
       </header>
 
